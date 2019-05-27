@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.firebase.codelab.ocr.R
 import kotlinx.android.synthetic.main.item.view.image
 import kotlinx.android.synthetic.main.item.view.imagegs
 import kotlinx.android.synthetic.main.item.view.prediction

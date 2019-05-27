@@ -1,4 +1,4 @@
-#Fri May 24 14:12:30 WIB 2019
+#Tue May 28 04:17:22 WIB 2019
 base.0=/Users/wnugraha/Projects/mlkit-android-master/vision/final/app/build/intermediates/dex/debug/mergeDexDebug/out
 path.0=classes.dex
 renamed.0=classes.dex

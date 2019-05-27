@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.firebase.codelab.mlkit"
+    package="id.wahyu.ocr"
     android:targetSandboxVersion="2"
     android:versionCode="1"
     android:versionName="1.0" >
@@ -31,7 +31,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.google.firebase.codelab.mlkit.MainActivity"
+            android:name="id.wahyu.ocr.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -80,7 +80,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.google.firebase.codelab.mlkit.firebaseinitprovider"
+            android:authorities="id.wahyu.ocr.firebaseinitprovider"
             android:exported="false"
             android:initOrder="100" />
 

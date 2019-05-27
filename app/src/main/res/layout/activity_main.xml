@@ -22,11 +22,6 @@
             android:contentDescription="@string/select_image_for_text_recognition"
             android:scaleType="fitStart"/>
 
-
-        <id.wahyu.ocr.GraphicOverlay
-            android:id="@+id/graphic_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </FrameLayout>
 
     <ImageView

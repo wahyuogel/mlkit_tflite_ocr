@@ -60,7 +60,7 @@ INJECTED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src
 INJECTED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:2:1-31:12
 INJECTED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:2:1-31:12
 	package
-		ADDED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:3:5-48
+		ADDED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:3:5-27
 		INJECTED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -143,14 +143,14 @@ MERGED from [org.tensorflow:tensorflow-lite:1.12.0] /Users/wnugraha/.gradle/cach
 		ADDED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:11:9-35
 	android:theme
 		ADDED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:16:9-40
-activity#com.google.firebase.codelab.mlkit.MainActivity
+activity#id.wahyu.ocr.MainActivity
 ADDED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:17:9-25:20
 	android:screenOrientation
 		ADDED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:18:13-49
 	android:configChanges
 		ADDED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:19:13-74
 	android:name
-		ADDED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:17:19-47
+		ADDED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:17:19-59
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /Users/wnugraha/Projects/mlkit-android-master/vision/final/app/src/main/AndroidManifest.xml:20:13-24:29
 action#android.intent.action.MAIN

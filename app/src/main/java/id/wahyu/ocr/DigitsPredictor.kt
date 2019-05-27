@@ -11,11 +11,8 @@ import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import android.graphics.Bitmap
 import android.util.Log
-import java.lang.Exception
-import android.graphics.BitmapFactory
 import android.os.SystemClock
 import android.widget.TextView
-
 class DigitsPredictor {
 
     private val TAG = this.javaClass.simpleName
@@ -64,7 +61,7 @@ class DigitsPredictor {
      */
 
     fun getTextPredictionFromImage(path: String?) {
-        val iterate = listCharacterFromBitmap(path)!!.listIterator()
+        val iterate = BitmapUtils.BitmapUtils.listCharacterFromBitmap(path, DIM_IMG_SIZE_X, ID_CHAR_SIZE, ID_CHAR_PADDING)!!.listIterator()
         while (iterate.hasNext()) {
             val bitmapChar = iterate.next()
             preprocess(bitmapChar)
@@ -90,11 +87,6 @@ class DigitsPredictor {
      */
 
     fun runModelInference(byteBufferChar: ByteBuffer, tv: TextView) {
-        var numberResult = 0
-
-        if (mModelInterpreter == null) {
-            tv.text = "Predicted Number (FB): " + -1
-        }
         val inputs = FirebaseModelInputs.Builder().add(byteBufferChar).build()
         mModelInterpreter!!
                 .run(inputs, mModelDataOptions!!)
@@ -168,48 +160,14 @@ class DigitsPredictor {
         Log.d(TAG, "Time cost to put values into ByteBuffer: " + java.lang.Long.toString(endTime - startTime))
     }
 
-    /**
-     * Get list of Character from Image Path based on specific rectangle region and position.
-     */
-    private fun listCharacterFromBitmap(path: String?): MutableList<Bitmap>? {
-        val bitmapWithregion = getBitmapFromImagePath(path, 450, 50, 260, 85)
-        val list: MutableList<Bitmap> = ArrayList()
-        var tempX = 0
-        for (x in 0..ID_CHAR_SIZE) {
-            list.add(cropImage(bitmapWithregion, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y, tempX, 0))
-            tempX += ID_PADDING_CHARACTER
-        }
-        return list
-    }
 
-    /**
-     * Get bitmap from image path and crop image into specific sizing
-     */
-    private fun getBitmapFromImagePath(path: String?, rectWidth: Int, rectHeight: Int, x: Int, y: Int): Bitmap {
-        val bm = BitmapFactory.decodeFile(path)
-        return cropImage(bm, rectWidth, rectHeight, x, y);
-    }
-
-    /**
-     * Crop Image from bitmap
-     */
-    private fun cropImage(bm: Bitmap, rectWidth: Int, rectHeight: Int, x: Int, y: Int): Bitmap {
-        val rect = Rect(0, 0, rectWidth, rectHeight)
-        val mutableBitmap = bm.copy(Bitmap.Config.ARGB_8888, true)
-        try {
-            return Bitmap.createBitmap(mutableBitmap, x, y, rect.width(), rect.height())
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        return bm
-    }
 
     /**
      * Run on device text recognizer from Firebase Vision based on bitmap from image
      */
     fun imageToTextRecognizer(path: String?): String {
         val stringBuffer = StringBuffer()
-        val bm = getBitmapFromImagePath(path, 475, 45, 250, 85)
+        val bm = BitmapUtils.BitmapUtils.getBitmapFromImagePath(path, 475, 45, 250, 85)
         val image = FirebaseVisionImage.fromBitmap(bm)
         val recognizer = FirebaseVision.getInstance()
                 .onDeviceTextRecognizer
@@ -250,10 +208,8 @@ class DigitsPredictor {
         //ID length
         private val ID_CHAR_SIZE = 15
 
-        /**
-         * Padding between ID Character
-         */
-        private val ID_PADDING_CHARACTER = 24
+        //Padding between ID Character
+        private val ID_CHAR_PADDING = 24
 
         private val ASSET_FOLDER = "asset"
 

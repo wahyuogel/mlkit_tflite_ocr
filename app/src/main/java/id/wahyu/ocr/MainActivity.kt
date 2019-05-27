@@ -11,7 +11,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import com.google.firebase.codelab.ocr.R
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,7 +20,6 @@ import java.io.InputStream
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private var mSelectedImage: Bitmap? = null
-    private var mGraphicOverlay: GraphicOverlay? = null
 
     private var mDigitsDetector : DigitsDetector? = null
     private var mDigitsPredictor : DigitsPredictor? = null
@@ -31,7 +29,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         setContentView(R.layout.activity_main)
         mDigitsDetector = DigitsDetector(this@MainActivity)
         mDigitsPredictor = DigitsPredictor()
-        mGraphicOverlay = findViewById(R.id.graphic_overlay)
         button_text.setOnClickListener { detectWithFB() }
         button_run_custom_model.setOnClickListener { detectWithTF() }
         button_run_custom_model_list.setOnClickListener { detectWithTFNik() }
@@ -90,7 +87,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     override fun onItemSelected(parent: AdapterView<*>, v: View, position: Int, id: Long) {
         mSelectedImage = null
-        mGraphicOverlay!!.clear()
         when (position) {
             0 -> mSelectedImage = getBitmapFromAsset(this, "sample_0.jpg")
             1 -> mSelectedImage = getBitmapFromAsset(this, "sample_1.jpg")
