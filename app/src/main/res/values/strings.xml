@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ML Kit Test</string>
+    <string name="select_image_for_text_recognition">Select image for text recognition</string>
+    <string name="find_text_button">Predict (MLK)</string>
+    <string name="find_face_contour_button">Find face contour</string>
+    <string name="find_text_cloud_button">Find text (cloud)</string>
+    <string name="find_objects_button">Predict (TF)</string>
+    <string name="find_objects_button_list">Get NIK (TF)</string>
+</resources>
