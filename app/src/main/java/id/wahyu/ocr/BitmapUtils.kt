@@ -1,8 +1,11 @@
 package id.wahyu.ocr
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Rect
+import java.io.IOException
+import java.io.InputStream
 import java.lang.Exception
 
 
@@ -43,6 +46,20 @@ class BitmapUtils {
                 e.printStackTrace()
             }
             return bm
+        }
+
+        fun getBitmapFromAsset(context: Context, filePath: String): Bitmap? {
+            val assetManager = context.assets
+            val `is`: InputStream
+            var bitmap: Bitmap? = null
+            try {
+                `is` = assetManager.open(filePath)
+                bitmap = BitmapFactory.decodeStream(`is`)
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+
+            return bitmap
         }
     }
 }

@@ -1,8 +1,6 @@
 package id.wahyu.ocr
 
-import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -11,11 +9,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import id.wahyu.ocr.BitmapUtils.BitmapUtils.getBitmapFromAsset
 
 import kotlinx.android.synthetic.main.activity_main.*
 
-import java.io.IOException
-import java.io.InputStream
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -108,19 +105,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         // Do nothing
     }
 
-    fun getBitmapFromAsset(context: Context, filePath: String): Bitmap? {
-        val assetManager = context.assets
-        val `is`: InputStream
-        var bitmap: Bitmap? = null
-        try {
-            `is` = assetManager.open(filePath)
-            bitmap = BitmapFactory.decodeStream(`is`)
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
 
-        return bitmap
-    }
 
 
 
