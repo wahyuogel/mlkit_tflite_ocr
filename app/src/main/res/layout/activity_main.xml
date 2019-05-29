@@ -11,8 +11,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:foregroundGravity="center"
-        android:layout_weight="4">
+        android:layout_weight="4"
+        android:foregroundGravity="center">
 
         <ImageView
             android:id="@+id/image_view"
@@ -20,24 +20,29 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:contentDescription="@string/select_image_for_text_recognition"
-            android:scaleType="fitStart"/>
+            android:scaleType="fitStart" />
+
+        <id.wahyu.ocr.GraphicOverlay
+            android:id="@+id/graphic_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </FrameLayout>
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_gravity="center"
+        android:layout_weight="1"
         android:contentDescription="@string/select_image_for_text_recognition"
-        android:scaleType="fitStart"/>
+        android:scaleType="fitStart" />
 
 
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_weight="2">
+        android:layout_height="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,61 +50,72 @@
 
             <TextView
                 android:id="@+id/text_view"
-                android:textSize="32dp"
-                android:textStyle="bold"
-                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="32dp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:layout_weight="1" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:layout_weight="0.3"
-        app:layout_constraintBottom_toTopOf="@id/button_text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scroll_view" />
+        android:spinnerMode="dropdown" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
-        android:layout_weight="0.3"
-        android:weightSum="3">
+        android:weightSum="2">
 
         <Button
             android:id="@+id/button_text"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="55dp"
+            android:layout_weight="1"
             android:text="@string/find_text_button" />
 
 
         <Button
             android:id="@+id/button_run_custom_model"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="55dp"
+            android:layout_weight="1"
             android:text="@string/find_objects_button" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <Button
             android:id="@+id/button_run_custom_model_list"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="55dp"
+            android:layout_weight="1"
             android:text="@string/find_objects_button_list" />
+
+
+        <Button
+            android:id="@+id/button_rounded_box"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:text="@string/generate_bounding" />
 
     </LinearLayout>
 

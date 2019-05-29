@@ -31,7 +31,7 @@ class BitmapUtils {
          */
         fun getBitmapFromImagePath(path: String?, rectWidth: Int, rectHeight: Int, x: Int, y: Int): Bitmap {
             val bm = BitmapFactory.decodeFile(path)
-            return cropImage(bm, rectWidth, rectHeight, x, y);
+            return cropImage(bm, rectWidth, rectHeight, x, y)
         }
 
         /**

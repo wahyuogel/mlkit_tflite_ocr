@@ -6,4 +6,5 @@
     <string name="find_text_cloud_button">Find text (cloud)</string>
     <string name="find_objects_button">Predict (TF)</string>
     <string name="find_objects_button_list">Get NIK (TF)</string>
+    <string name="generate_bounding">Generate Bounding</string>
 </resources>

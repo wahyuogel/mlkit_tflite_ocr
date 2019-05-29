@@ -15,6 +15,9 @@ import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 import android.graphics.Bitmap
 import com.google.firebase.ml.common.FirebaseMLException
+import android.R.attr.left
+
+
 
 class DigitsDetector(activity: Activity) {
     private val TAG = this.javaClass.simpleName
@@ -72,6 +75,27 @@ class DigitsDetector(activity: Activity) {
         }
 
         val iterate = listCharacterFromBitmap(bitmap)!!.listIterator()
+        while (iterate.hasNext()) {
+            val bitmapChar = iterate.next()
+            try {
+                val scaledBitmap = Bitmap.createScaledBitmap(bitmapChar!!, 32, 32, false)
+                preprocess(scaledBitmap)
+                runInference()
+                list.add(ItemPrediction(scaledBitmap, toGrayscale(bitmapChar), "" + postprocess()))
+            } catch (e: FirebaseMLException) {
+                e.printStackTrace()
+            }
+        }
+        return list
+    }
+
+    fun classifyListByCharacterDivider(bitmap: Bitmap): MutableList<ItemPrediction> {
+        val list: MutableList<ItemPrediction> = ArrayList()
+        if (tflite == null) {
+            Log.e(TAG, "Image classifier has not been initialized; Skipped.")
+        }
+
+        val iterate = divideCharacterFromBitmap(bitmap)!!.listIterator()
         while (iterate.hasNext()) {
             val bitmapChar = iterate.next()
             try {
@@ -188,6 +212,19 @@ class DigitsDetector(activity: Activity) {
     /**
      * Get list of Character from Image Path based on specific rectangle region and position.
      */
+    private fun divideCharacterFromBitmap(bitmap: Bitmap?): MutableList<Bitmap>? {
+        val list: MutableList<Bitmap> = ArrayList()
+        var tempX = 0
+        for (x in 0..15) {
+            list.add(cropImage(bitmap!!, bitmap.width/16, bitmap.width/16, tempX, bitmap.width/16/3))
+            tempX += bitmap.width/16
+        }
+        return list
+    }
+
+    /**
+     * Get list of Character from Image Path based on specific rectangle region and position.
+     */
     private fun listCharacterFromBitmap(bitmap: Bitmap?): MutableList<Bitmap>? {
         val bitmapWithregion = cropImage(bitmap!!, 425, 40, 210, 100)
         val list: MutableList<Bitmap> = ArrayList()
@@ -216,10 +253,23 @@ class DigitsDetector(activity: Activity) {
         return bm
     }
 
+    /**
+     * Crop Image from bitmap
+     */
+    fun cropImage(bm: Bitmap, rectf: Rect?) : Bitmap{
+        val mutableBitmap = bm.copy(Bitmap.Config.ARGB_8888, true)
+        try {
+            return Bitmap.createBitmap(mutableBitmap, rectf!!.left, rectf!!.top, rectf!!.width(), rectf!!.height(), null, false)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return bm
+    }
+
     companion object {
 
         // Name of the file in the assets folder
-        private val MODEL_PATH = "5_6285133889744666812.tflite"
+        private val MODEL_PATH = "model_6d09c6e6fef4461fada742a7d3c42d87.tflite"
 
         // Specify the output size
         private val NUMBER_LENGTH = 10

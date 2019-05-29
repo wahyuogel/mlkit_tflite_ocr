@@ -165,10 +165,9 @@ class DigitsPredictor {
     /**
      * Run on device text recognizer from Firebase Vision based on bitmap from image
      */
-    fun imageToTextRecognizer(path: String?): String {
+    fun imageToTextRecognizer(bitmap: Bitmap?): String {
         val stringBuffer = StringBuffer()
-        val bm = BitmapUtils.BitmapUtils.getBitmapFromImagePath(path, 475, 45, 250, 85)
-        val image = FirebaseVisionImage.fromBitmap(bm)
+        val image = FirebaseVisionImage.fromBitmap(bitmap!!)
         val recognizer = FirebaseVision.getInstance()
                 .onDeviceTextRecognizer
         recognizer.processImage(image)
