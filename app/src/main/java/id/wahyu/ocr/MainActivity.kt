@@ -37,15 +37,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         button_rounded_box.setOnClickListener { generateBounding() }
         val dropdown = findViewById<Spinner>(R.id.spinner)
         val items = arrayOf(
-//                "Test Image 1",
-//                "Test Image 2",
-//                "Test Image 3",
-//                "Test Image 4",
-//                "Test Image 5",
-//                "Test Image 6",
-//                "Test Image 7",
-//                "Test Image 8",
-//                "Test Image 9",
                 "KTP 1",
                 "KTP 2",
                 "KTP 3")
@@ -134,15 +125,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>, v: View, position: Int, id: Long) {
         mSelectedImage = null
         when (position) {
-//            0 -> mSelectedImage = getBitmapFromAsset(this, "sample_0.jpg")
-//            1 -> mSelectedImage = getBitmapFromAsset(this, "sample_1.jpg")
-//            2 -> mSelectedImage = getBitmapFromAsset(this, "sample_2.jpg")
-//            3 -> mSelectedImage = getBitmapFromAsset(this, "sample_3.jpg")
-//            4 -> mSelectedImage = getBitmapFromAsset(this, "sample_4.jpg")
-//            5 -> mSelectedImage = getBitmapFromAsset(this, "sample_5.jpg")
-//            6 -> mSelectedImage = getBitmapFromAsset(this, "sample_6.jpg")
-//            7 -> mSelectedImage = getBitmapFromAsset(this, "sample_7.jpg")
-//            8 -> mSelectedImage = getBitmapFromAsset(this, "sample_8.jpg")
             0 -> mSelectedImage = getBitmapFromAsset(this, "ktp_4.jpg")
             1 -> mSelectedImage = getBitmapFromAsset(this, "ktp_2.jpg")
             2 -> mSelectedImage = getBitmapFromAsset(this, "ktp_3.jpg")

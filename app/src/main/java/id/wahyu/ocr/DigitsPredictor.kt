@@ -163,13 +163,14 @@ class DigitsPredictor {
 
 
     /**
-     * Run on device text recognizer from Firebase Vision based on bitmap from image
+     * Run on device / cloud text recognizer from Firebase Vision based on bitmap from image
      */
-    fun imageToTextRecognizer(bitmap: Bitmap?): String {
+    fun imageToTextRecognizer(bitmap: Bitmap?, byCloud : Boolean): String {
         val stringBuffer = StringBuffer()
         val image = FirebaseVisionImage.fromBitmap(bitmap!!)
-        val recognizer = FirebaseVision.getInstance()
-                .onDeviceTextRecognizer
+        var recognizer = FirebaseVision.getInstance().onDeviceTextRecognizer
+        if(byCloud)
+            recognizer = FirebaseVision.getInstance().cloudTextRecognizer
         recognizer.processImage(image)
                 .addOnSuccessListener { texts ->
                     for (block in texts.textBlocks) {
@@ -186,6 +187,7 @@ class DigitsPredictor {
                 }
         return stringBuffer.toString()
     }
+
 
     companion object {
 
