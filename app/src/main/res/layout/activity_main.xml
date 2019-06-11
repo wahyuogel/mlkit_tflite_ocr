@@ -76,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="3">
 
         <Button
             android:id="@+id/button_text"
@@ -84,6 +84,13 @@
             android:layout_height="55dp"
             android:layout_weight="1"
             android:text="@string/find_text_button" />
+
+        <Button
+            android:id="@+id/button_model"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:text="Predict Model" />
 
 
         <Button
